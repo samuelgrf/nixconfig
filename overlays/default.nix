@@ -1,7 +1,8 @@
 { flakes }: final: prev: {
 
-  # ungoogled-chromium: Add command line arguments.
+  # ungoogled-chromium: Enable Widevine and add command line arguments.
   ungoogled-chromium = prev.ungoogled-chromium.override {
+    enableWideVine = true;
     commandLineArgs = toString [
       # Performance
       "--enable-gpu-rasterization"
