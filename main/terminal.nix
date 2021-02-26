@@ -79,7 +79,7 @@
       nsrr = "rm -v $(nsr)";
       nu = ''
         cd $(dirname $(readlink -m /etc/nixos/flake.nix))
-        nix flake update --recreate-lock-file --commit-lock-file\
+        nix flake update --commit-lock-file\
       '';
       nub = "nu && sudo nixos-rebuild -v boot";
       nubu = "nu && sudo nixos-rebuild -v build";

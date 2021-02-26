@@ -61,6 +61,11 @@
     };
   };
 
+  # nix: Fix build from nix-master overlay.
+  nix = prev.nix.overrideAttrs (_: {
+    doInstallCheck = false;
+  });
+
   g810-led = prev.callPackage ./g810-led { };
 
   libstrangle = prev.callPackage ./libstrangle {

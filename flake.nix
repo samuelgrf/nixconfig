@@ -4,12 +4,16 @@
       url = "github:nix-community/home-manager/release-20.09";
       inputs.nixpkgs.follows = "/nixpkgs";
     };
+    nix-master = {
+      url = "github:NixOS/nix";
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-master.url = "github:NixOS/nixpkgs";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, home-manager, nixpkgs, nixpkgs-master, nixpkgs-unstable } @inputs: {
+  outputs = { self, home-manager, nix-master, nixpkgs, nixpkgs-master, nixpkgs-unstable } @inputs: {
     nixosConfigurations =
     let
       # The NixOS release to be compatible with for stateful data such as databases.
@@ -49,6 +53,7 @@
             }) inputs;
 
             nixpkgs.overlays = [
+              nix-master.overlay
               (import ./overlays { inherit flakes; })
             ];
 

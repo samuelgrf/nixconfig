@@ -5,7 +5,6 @@
   nix.autoOptimiseStore = true;
 
   # Enable Nix flake support.
-  nix.package = pkgs.nixUnstable;
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   # Define user accounts. Don't forget to set a password with ‘passwd’.
